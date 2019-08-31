@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-var new_value = '';
 class AddNewTask extends Component{
     constructor(props){
         super(props);
@@ -10,18 +9,19 @@ class AddNewTask extends Component{
     }
 
     changeNewtaskvalue = (event) =>{
-        new_value = this.state.newtask_value;
         this.setState({
             newtask_value: event.target.value,
         })
     }
 
     upadteNewValues = () => {
-        this.props.add_tasklist(this.state.newtask_value);
-        this.props.change_states();
-        this.setState({
-            newtask_value: '',
-        })
+        if(this.state.newtask_value){
+            this.props.add_tasklist(this.state.newtask_value);
+            this.props.change_states();
+            this.setState({
+                newtask_value: '',
+            })
+        }
     }
     render(props){
         return(

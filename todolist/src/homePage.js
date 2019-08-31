@@ -7,8 +7,8 @@ class Homepage extends Component{
     constructor(props){
         super(props);
         this.state = { selectedView: 'Todo',
-                       Todo_List:['Do Exercise','Eat Fruits','Wash Clothes'],
-                       completed_tasks:[],
+                       Todo_List:['Attend React Conf','Launch Web App','Grocery Shopping'],
+                       completed_tasks:['Upload in Github'],
                     }
         this.completedTasks = this.completedTasks.bind(this);
         this.add_tasklist = this.add_tasklist.bind(this);
@@ -37,13 +37,13 @@ class Homepage extends Component{
             <div className="center">
             <div >
                 <div className="ui blue inverted three item menu">
-                <a className="item" onClick={()=> this.setState({selectedView: "Todo"})}>MY TODO'S</a>
-                <a className="item" onClick={()=> this.setState({selectedView: "Completed"})}>COMPLETED</a>
+                <div className="item" onClick={()=> this.setState({selectedView: "Todo"})}>MY TODO'S</div>
+                <div className="item" onClick={()=> this.setState({selectedView: "Completed"})}>COMPLETED</div>
                 </div>
                 <div className="ui segment">
-                {this.state.selectedView == 'Todo' && 
+                {this.state.selectedView === 'Todo' && 
                 <TodoHome todo_list={this.state.Todo_List} completedTasks={this.completedTasks} add_tasklist={this.add_tasklist}/>}
-                {this.state.selectedView == 'Completed' && <CompletedTaskList completedList = {this.state.completed_tasks}/>}
+                {this.state.selectedView === 'Completed' && <CompletedTaskList completedList = {this.state.completed_tasks}/>}
                 </div>
             </div>
             </div>
